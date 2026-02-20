@@ -11,12 +11,6 @@
     <f:asset.module identifier="@typo3/backend/utility/collapse-state-persister.js"/>
     <f:asset.module identifier="@typo3/backend/utility/collapse-state-search.js"/>
 
-    <f:be.pageRenderer
-        addJsInlineLabels="{
-            'collapse-state-search.numberOfSearchMatches': 'lowlevel.messages:module.configuration.numberOfSearchMatches'
-        }"
-    />
-
     <form action="" id="ConfigurationView" method="post">
         <h1><f:translate domain="lowlevel.messages" key="configuration.headline" arguments="{0: treeName}" /></h1>
 
