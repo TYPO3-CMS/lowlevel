@@ -8,12 +8,12 @@
     </unit>
     <unit id="short_description">
       <segment>
-        <source>Advanced database querries, allowing filtering and sorting</source>
+        <source>Database queries, allowing filtering and sorting</source>
       </segment>
     </unit>
     <unit id="description">
       <segment>
-        <source>Provides a configurable interface for building custom database queries. Allows filtering, sorting, and limiting results without requiring direct SQL input.</source>
+        <source>Build custom database queries using a configurable interface that supports filtering, sorting, and limiting results without requiring direct SQL.</source>
       </segment>
     </unit>
   </file>

@@ -10,7 +10,7 @@
         <source>Database query tools</source>
       </trans-unit>
       <trans-unit id="description">
-        <source>Comprehensive search and query tools for the TYPO3 database</source>
+        <source>Search and query the TYPO3 database using advanced tools.</source>
       </trans-unit>
       <trans-unit id="query_loaded">
         <source>Query "%s" loaded</source>
