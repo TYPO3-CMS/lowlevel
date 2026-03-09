@@ -17,8 +17,11 @@ declare(strict_types=1);
 
 namespace TYPO3\CMS\Lowlevel\ConfigurationModuleProvider;
 
+use TYPO3\CMS\Core\Security\ContentSecurityPolicy\Configuration\Behavior;
 use TYPO3\CMS\Core\Security\ContentSecurityPolicy\ConsumableNonce;
+use TYPO3\CMS\Core\Security\ContentSecurityPolicy\DirectiveHashCollection;
 use TYPO3\CMS\Core\Security\ContentSecurityPolicy\Disposition;
+use TYPO3\CMS\Core\Security\ContentSecurityPolicy\Middleware\PolicyBag;
 use TYPO3\CMS\Core\Security\ContentSecurityPolicy\ModelService;
 use TYPO3\CMS\Core\Security\ContentSecurityPolicy\MutationCollection;
 use TYPO3\CMS\Core\Security\ContentSecurityPolicy\MutationOrigin;
@@ -34,7 +37,8 @@ class ContentSecurityPolicyMutationsProvider extends AbstractProvider
 {
     public function __construct(
         protected readonly ModelService $modelService,
-        protected readonly MutationRepository $mutationRepository
+        protected readonly MutationRepository $mutationRepository,
+        protected readonly DirectiveHashCollection $directiveHashCollection,
     ) {}
 
     public function getConfiguration(): array
@@ -81,7 +85,7 @@ class ContentSecurityPolicyMutationsProvider extends AbstractProvider
                     }
                 }
                 $data[$scopeValue][$disposition->value] = [
-                    '@policy' => $policy->compile($nonce),
+                    '@policy' => $policy->compile(new PolicyBag($scope, new Map(), new Behavior(), $nonce, $this->directiveHashCollection)),
                     ...$data[$scopeValue][$disposition->value],
                 ];
             }
